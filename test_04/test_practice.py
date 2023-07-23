@@ -1,4 +1,4 @@
-from practice import Money
+from practice import Money, Portfolio
 
 
 def test_multiplication_in_euros():
@@ -15,7 +15,16 @@ def test_multiplication_in_dollars():
 
 
 def test_division():
-    originalMoney = Money(4002, "KRW")
-    actualMoneyAfterDivision = originalMoney.divide(4)
-    expectedMoneyAfterDivision = Money(1000.5, "KRW")
-    assert actualMoneyAfterDivision == expectedMoneyAfterDivision
+    original_money = Money(4002, "KRW")
+    actual_money_after_division = original_money.divide(4)
+    expected_money_afterDivision = Money(1000.5, "KRW")
+    assert actual_money_after_division == expected_money_afterDivision
+
+
+def test_addition():
+    five_dollars = Money(5, "USD")
+    ten_dollars = Money(10, "USD")
+    fifteen_dollars = Money(15, "USD")
+    portfolio = Portfolio()
+    portfolio.add(five_dollars, ten_dollars)
+    assert fifteen_dollars == portfolio.evaluate("USD")
